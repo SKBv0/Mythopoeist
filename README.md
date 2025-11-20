@@ -4,7 +4,10 @@ Generate complete mythological worlds with Ollama or OpenRouter. Select star blo
 
 
 
-https://github.com/user-attachments/assets/f79fd709-5a69-4e04-b585-3ff393d0a8c1
+
+
+https://github.com/user-attachments/assets/4a87b0a9-8209-4271-a684-4e3fa7e74d8c
+
 
 
 
