@@ -3,7 +3,6 @@ import { StoryViewer } from "@/components/StoryViewer";
 import { LoadingMythState } from "@/components/LoadingMythState";
 import { useMythologyGenerator } from "@/hooks/useMythologyGenerator";
 import { useAISettings } from "@/hooks/useAISettings";
-import { mythBlocks } from "@/data/myth-blocks";
 import { CATEGORY_COLORS, CATEGORY_GLOWS, DEFAULTS } from "@/constants/ui";
 import { MythologySelections, CustomDescriptions, Star as StarType } from "@/types/mythology";
 import { AnimatePresence, motion } from 'framer-motion';
@@ -11,18 +10,20 @@ import { useState, useRef } from 'react';
 import { logger } from '@/utils/logger';
 import { useToast } from '@/hooks/useToast';
 
-interface Star extends StarType {
-  category: {
+interface Star extends Omit<StarType, 'vx' | 'vy'> {
+  categoryKey: string;
+  category?: {
     key: keyof MythologySelections;
     title: string;
     icon: React.ElementType;
     color: string;
     glow: string;
-    options: Array<{ id: string; name: string; description: string }>;
+    options?: Array<{ id: string; name: string; description: string }>;
   };
+  vx: number;
   vy: number;
-  duration: number;
-  delay: number;
+  duration?: number;
+  delay?: number;
 }
 
 
@@ -119,9 +120,50 @@ const Index = () => {
   };
 
 
-  const handleCaptureStarPositions = (positions: Star[], order: string[]) => {
-    starPositionsRef.current = positions;
+  const handleCaptureStarPositions = (positions: Array<{
+    id: string;
+    categoryKey: string | number | keyof MythologySelections;
+    x: number;
+    y: number;
+    name?: string;
+    description?: string;
+    vx?: number;
+    vy?: number;
+    category?: {
+      color: string;
+      glow: string;
+    };
+  }>, order: string[]) => {
+    const convertedPositions: Star[] = positions.map(pos => {
+      const categoryKey = String(pos.categoryKey || '');
+      const categoryStyle = getCategoryStyle(categoryKey);
+      return {
+        id: pos.id,
+        name: pos.name || pos.id,
+        description: pos.description || '',
+        categoryKey,
+        x: pos.x,
+        y: pos.y,
+        vx: pos.vx ?? 0,
+        vy: pos.vy ?? 0,
+        category: pos.category ? {
+          key: categoryKey as keyof MythologySelections,
+          title: categoryKey,
+          icon: () => null,
+          color: pos.category.color,
+          glow: pos.category.glow
+        } : {
+          key: categoryKey as keyof MythologySelections,
+          title: categoryKey,
+          icon: () => null,
+          color: categoryStyle.color,
+          glow: categoryStyle.glow
+        }
+      };
+    });
+    starPositionsRef.current = convertedPositions;
     selectionOrderRef.current = order;
+    setCapturedStarPositions(convertedPositions);
   };
 
   const isStoryGenerated = generationState.hasStarted && generationState.result;
@@ -228,6 +270,7 @@ const Index = () => {
               isGenerationReady={isGenerationReady}
               onGenerate={handleGenerate}
               stars={capturedStarPositions}
+              selectionOrder={selectionOrderRef.current}
               recoveryStatus={recoveryStatus}
               onRegenerateSections={regenerateSpecificSections}
               onAcceptPartialResult={acceptPartialResult}

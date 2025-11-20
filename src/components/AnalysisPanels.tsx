@@ -202,9 +202,10 @@ const SelectionSlot = memo(({ icon: Icon, label, value, active }: { icon: React.
 interface LogoPanelProps {
   stars: StarType[];
   selections: MythologySelections;
+  selectionOrder?: string[];
 }
 
-export const LogoPanel = ({ stars, selections }: LogoPanelProps) => {
+export const LogoPanel = ({ stars, selections, selectionOrder }: LogoPanelProps) => {
   const logoRef = useRef(null);
 
   const handleDownload = () => {
@@ -233,7 +234,7 @@ export const LogoPanel = ({ stars, selections }: LogoPanelProps) => {
         <div className="p-2 bg-black/20 rounded-lg relative group/logo">
           <div className="text-xs font-['Cinzel'] text-amber-300 mb-2 uppercase tracking-wider">Constellation</div>
           <div ref={logoRef} className="h-48">
-            <MythicLogo stars={stars} selections={selections} />
+            <MythicLogo stars={stars} selections={selections} selectionOrder={selectionOrder} />
           </div>
           <TooltipProvider>
             <Tooltip>

@@ -21,6 +21,7 @@ interface StoryViewerProps {
   isGenerationReady: boolean;
   onGenerate: () => void;
   stars: Star[];
+  selectionOrder?: string[];
   recoveryStatus?: {
     isRecovered: boolean;
     recoveredSections: string[];
@@ -34,7 +35,8 @@ interface StoryViewerProps {
 const MemoizedAnalysisPanel = memo(AnalysisPanel);
 const MemoizedLogoPanel = memo(LogoPanel, (prevProps, nextProps) => {
   return prevProps.stars === nextProps.stars && 
-         prevProps.selections === nextProps.selections;
+         prevProps.selections === nextProps.selections &&
+         prevProps.selectionOrder === nextProps.selectionOrder;
 });
 const MemoizedForgeCore = memo(ForgeCore, (prevProps, nextProps) => {
   return prevProps.isGenerationReady === nextProps.isGenerationReady &&
@@ -44,10 +46,11 @@ const MemoizedForgeCore = memo(ForgeCore, (prevProps, nextProps) => {
 
 export const StoryViewer = ({ 
   generationState, 
-  selections, 
+  selections,
   isGenerationReady, 
   onGenerate, 
   stars,
+  selectionOrder,
   recoveryStatus,
   onRegenerateSections,
   onAcceptPartialResult
@@ -225,7 +228,7 @@ export const StoryViewer = ({
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="h-full lg:col-span-3 flex flex-col gap-6 lg:gap-8 min-h-0 max-w-sm lg:max-w-none"
           >
-            <MemoizedLogoPanel stars={stars} selections={selections} />
+            <MemoizedLogoPanel stars={stars} selections={selections} selectionOrder={selectionOrder} />
           </motion.div>
 
           <motion.div 

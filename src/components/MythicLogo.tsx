@@ -14,9 +14,10 @@ interface MythicLogoProps {
     };
   }>;
   selections: MythologySelections;
+  selectionOrder?: string[];
 }
 
-export const MythicLogo = ({ stars, selections }: MythicLogoProps) => {
+export const MythicLogo = ({ stars, selections, selectionOrder }: MythicLogoProps) => {
   return (
     <div className="w-full h-full relative aspect-square">
       <svg
@@ -39,6 +40,7 @@ export const MythicLogo = ({ stars, selections }: MythicLogoProps) => {
         <ConstellationLines 
           stars={stars}
           selections={selections}
+          selectionOrder={selectionOrder}
           isLoading={false}
         />
         
