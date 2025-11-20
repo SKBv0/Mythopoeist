@@ -1,0 +1,174 @@
+.epic-script {
+    @apply text-amber-50;
+    font-size: 1.2rem !important;
+    line-height: 1.9 !important;
+    letter-spacing: 0.03em;
+    font-weight: 450;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+    font-family: 'Playfair Display', serif;
+}
+
+.epic-script p {
+    @apply mb-8;
+    text-align: justify;
+    text-indent: 0;
+    max-width: none !important;
+    position: relative;
+    overflow: visible;
+    clear: both;
+}
+
+.epic-script p::first-letter {
+    font-size: 5rem;
+    line-height: 0.75;
+    float: left;
+    margin: 0.1rem 0.4rem 0.2rem 0;
+    padding: 0.2rem 0.3rem;
+    
+    background: linear-gradient(135deg, 
+        #d4af37 0%, 
+        #f4d03f 30%, 
+        #f7dc6f 50%, 
+        #f4d03f 70%, 
+        #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 300% 300%;
+    
+    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    
+    position: relative;
+    display: block;
+    
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3))
+            drop-shadow(0 0 12px rgba(244, 208, 63, 0.2));
+        
+    animation: elegant-shimmer 8s ease-in-out infinite;
+        
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateZ(0);
+}
+
+@keyframes elegant-shimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+        transform: translateZ(0) scale(1);
+        filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3))
+                drop-shadow(0 0 12px rgba(244, 208, 63, 0.2));
+    }
+    25% {
+        background-position: 50% 100%;
+        transform: translateZ(0) scale(1.02);
+        filter: drop-shadow(0 3px 12px rgba(212, 175, 55, 0.4))
+                drop-shadow(0 0 18px rgba(244, 208, 63, 0.3));
+    }
+    50% {
+        background-position: 100% 50%;
+        transform: translateZ(0) scale(1.03);
+        filter: drop-shadow(0 4px 16px rgba(212, 175, 55, 0.5))
+                drop-shadow(0 0 24px rgba(244, 208, 63, 0.4));
+    }
+    75% {
+        background-position: 50% 0%;
+        transform: translateZ(0) scale(1.02);
+        filter: drop-shadow(0 3px 12px rgba(212, 175, 55, 0.4))
+                drop-shadow(0 0 18px rgba(244, 208, 63, 0.3));
+    }
+}
+
+@keyframes drop-cap-glow {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(212, 175, 55, 0.3),
+                    inset 0 1px 3px rgba(244, 208, 63, 0.2);
+        transform: translateZ(0) scale(1);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(212, 175, 55, 0.5),
+                    inset 0 2px 6px rgba(244, 208, 63, 0.3);
+        transform: translateZ(0) scale(1.02);
+    }
+}
+
+@keyframes ornamental-pulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translateZ(0) scale(1) rotateY(0deg);
+        filter: brightness(1) saturate(1);
+    }
+    25% {
+        opacity: 0.75;
+        transform: translateZ(0) scale(1.01) rotateY(1deg);
+        filter: brightness(1.1) saturate(1.1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateZ(0) scale(1.02) rotateY(0deg);
+        filter: brightness(1.2) saturate(1.2);
+    }
+    75% {
+        opacity: 0.75;
+        transform: translateZ(0) scale(1.01) rotateY(-1deg);
+        filter: brightness(1.1) saturate(1.1);
+    }
+}
+
+.epic-script p::first-letter:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+}
+
+.epic-script .legend-body-content p:first-of-type::first-letter {
+    font-size: 4.56rem !important;
+    line-height: 1 !important;
+    float: left !important;
+    margin: 0 0.5rem 0 0 !important;
+    padding: 0 !important;
+    
+    color: rgba(230, 216, 180, 0.75) !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: rgba(230, 216, 180, 0.75) !important;
+    background-clip: unset !important;
+    
+    font-weight: 500 !important;
+    font-family: 'Playfair Display', serif !important;
+    font-style: normal !important;
+    letter-spacing: 0.01em !important;
+    
+    position: relative;
+    display: block;
+    vertical-align: top;
+    
+    text-shadow: none !important;
+    filter: none !important;
+    animation: none !important;
+    
+    transform: translateZ(0);
+}
+
+.epic-script .legend-body-content p:not(:first-of-type)::first-letter {
+    float: none !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: inherit !important;
+    background-clip: unset !important;
+    animation: none !important;
+    filter: none !important;
+    display: inline !important;
+    color: inherit !important;
+    font-weight: inherit !important;
+    font-style: inherit !important;
+    letter-spacing: inherit !important;
+}
+
+@keyframes subtle-glow {
+    0% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+    100% { text-shadow: 0 0 25px rgba(212, 175, 55, 0.8); }
+} 

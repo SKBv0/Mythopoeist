@@ -1,0 +1,283 @@
+:root {
+  --color-bg-deep-space: #0D1117;
+  --color-bg-stygian-slate: #161B22;
+  --color-panel-background: rgba(22, 27, 34, 0.8);
+  --color-border-primary: #BFA15A;
+  --color-border-secondary: rgba(191, 161, 90, 0.4);
+  --color-border-hover: #D4AF37;
+  --color-text-primary: #E6D8B4;
+  --color-text-secondary: #A69B7E;
+  --color-text-title: #D4B76A;
+  --color-highlight-primary: #D4AF37;
+  --color-highlight-secondary: rgba(212, 175, 55, 0.1);
+  --color-glow: rgba(212, 175, 55, 0.5);
+  --color-destructive: #E5534B;
+}
+
+.mystical-glow {
+  text-shadow:
+    0 0 8px var(--color-glow),
+    0 0 12px var(--color-glow);
+  animation: mystical-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes mystical-pulse {
+  from { opacity: 0.85; }
+  to { opacity: 1; }
+}
+
+.runic-border {
+  position: relative;
+  border: 1px solid var(--color-border-secondary);
+  transition: border-color 0.3s ease;
+}
+
+.runic-border:hover {
+  border-color: var(--color-border-hover);
+}
+
+.divine-shimmer {
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(212, 175, 55, 0.1) 50%,
+    transparent 75%
+  );
+  background-size: 200% 100%;
+  animation: divine-flow 5s ease-in-out infinite;
+}
+
+@keyframes divine-flow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.floating-embers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ember {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.ancient-script {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.08;
+}
+
+.script-char {
+  position: absolute;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+}
+
+.ancient-magic-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 25% 25%, var(--color-highlight-secondary) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, var(--color-highlight-secondary) 0%, transparent 40%);
+  animation: magic-rotation 30s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes magic-rotation {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.epic-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-primary) rgba(0,0,0,0.3);
+  overflow-y: scroll !important;
+  max-height: 100% !important;
+}
+
+.epic-scroll::-webkit-scrollbar {
+  width: 12px;
+  background: rgba(0,0,0,0.3);
+}
+
+.epic-scroll::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+}
+
+.epic-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border-primary);
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.2);
+  min-height: 20px;
+}
+
+.epic-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+.epic-scroll::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0.3);
+}
+
+.legendary-text {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary);
+}
+
+.legend-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.legend-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(230, 216, 180, 0.6);
+}
+
+.legend-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-shadow: none;
+}
+
+.legend-body {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.legend-body-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+.legend-body-content p {
+  margin: 0 0 1.5rem 0;
+  line-height: 1.85;
+  text-indent: 0;
+}
+
+.legend-body-content p:first-of-type {
+  margin-top: 0;
+  line-height: 1.9;
+}
+
+.legend-body-content p:first-of-type::first-letter {
+  font-size: 4.56rem !important;
+  line-height: 1 !important;
+  float: left !important;
+  margin: 0 0.5rem 0 0 !important;
+  padding: 0 !important;
+  color: rgba(230, 216, 180, 0.75) !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: rgba(230, 216, 180, 0.75) !important;
+  background-clip: unset !important;
+  font-weight: 500 !important;
+  font-family: 'Playfair Display', serif !important;
+  font-style: normal !important;
+  letter-spacing: 0.01em !important;
+  position: relative;
+  display: block;
+  vertical-align: top;
+  text-shadow: none !important;
+  filter: none !important;
+  animation: none !important;
+  transform: translateZ(0);
+}
+
+.legend-body-content p:not(:first-of-type)::first-letter {
+  float: none !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: inherit !important;
+  background-clip: unset !important;
+  animation: none !important;
+  filter: none !important;
+  color: inherit !important;
+  font-weight: inherit !important;
+  font-style: inherit !important;
+  letter-spacing: inherit !important;
+}
+
+.golden-greeting {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--color-highlight-primary);
+  font-weight: 600;
+  margin-bottom: 2rem;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 0 15px var(--color-glow);
+}
+
+.epic-story-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(135deg, var(--color-text-primary), var(--color-text-title), var(--color-border-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 30px var(--color-glow);
+}
+
+.mystical-fade {
+  animation: mystical-rise 2s ease-out forwards;
+}
+
+@keyframes mystical-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .epic-story-title {
+    font-size: 2rem;
+  }
+  .golden-greeting {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+
